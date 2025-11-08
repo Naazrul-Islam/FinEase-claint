@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+
+a.active {
+    @apply bg-primary text-white font-bold;
+    @apply font-bold;
+}
