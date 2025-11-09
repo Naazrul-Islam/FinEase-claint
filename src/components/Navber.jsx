@@ -1,20 +1,26 @@
-import React, { use } from "react";
+import React from "react";
 import { FaUserGraduate } from "react-icons/fa";
 import { GiTeacher } from "react-icons/gi";
-import { Link, Navigate, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
+import { useTheme } from "../context/ThemeContext";
+import { Moon, Sun } from "lucide-react";
 
 const Navber = () => {
+  const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+  const { user, logOut } = React.useContext(AuthContext);
+
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        Navigate("/");
+        navigate("/");
       })
       .catch((error) => console.log(error));
   };
-  const { user, logOut } = use(AuthContext);
+
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-white/30 backdrop-blur-md shadow-md py-6 sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -25,45 +31,22 @@ const Navber = () => {
               viewBox="0 0 20 20"
               stroke="currentColor"
             >
-              {" "}
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+              />
             </svg>
           </div>
           <ul
             tabIndex="0"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-2 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-white/30 backdrop-blur-md rounded-box z-50 mt-3 w-52 p-2 shadow"
           >
             <li>
               <NavLink to={"/"}>Home</NavLink>
             </li>
             <li>
-              <NavLink to={"/profile"}>Add Transaction</NavLink>
-            </li>
-            <li>
-              <NavLink to={"/auth/forget-password"}>My Transactions</NavLink>
-            </li>
-            <li>
-              <NavLink to={"/auth/register"}>Reports</NavLink>
-            </li>
-            
-          </ul>
-        </div>
-        <Link to={"/"} className="btn btn-ghost text-xl">
-          <GiTeacher />
-          FinEase
-        </Link>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <NavLink to={"/"}>Home</NavLink>
-          </li>
-          <li>
               <NavLink to={"/AddTransaction"}>Add Transaction</NavLink>
             </li>
             <li>
@@ -72,26 +55,55 @@ const Navber = () => {
             <li>
               <NavLink to={"/Reports"}>Reports</NavLink>
             </li>
+          </ul>
+        </div>
+        <Link to={"/"} className="btn btn-ghost text-xl flex items-center gap-2">
+          <GiTeacher />
+          FinEase
+        </Link>
+      </div>
+
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 gap-3">
+          <li>
+            <NavLink to={"/"}>Home</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/AddTransaction"}>Add Transaction</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/MyTransactions"}>My Transactions</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/Reports"}>Reports</NavLink>
+          </li>
         </ul>
       </div>
-      <div className="navbar-end flex gap-5">
+
+      <div className="navbar-end flex gap-5 items-center">
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-full bg-gray-200/50 dark:bg-gray-700/50 backdrop-blur-sm"
+        >
+          {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+        </button>
+
         {user ? (
-          <div className="navbar-end flex gap-5 relative group pr-3">
+          <div className="flex gap-3 items-center relative group">
             <img
               src={user.photoURL}
               alt=""
-              className="w-10 rounded-full cursor-pointer "
+              className="w-10 h-10 rounded-full cursor-pointer border-2 border-white/50"
             />
             <span className="absolute bottom-[-35px] left-1/2 -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
               {user.displayName}
             </span>
-
             <button className="btn btn-primary" onClick={handleLogOut}>
-              logout
+              Logout
             </button>
           </div>
         ) : (
-          <div className="flex gap-5">
+          <div className="flex gap-3">
             <Link to={"/auth"} className="btn btn-primary">
               SignIn
             </Link>
@@ -106,3 +118,4 @@ const Navber = () => {
 };
 
 export default Navber;
+
