@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaUserGraduate } from "react-icons/fa";
 import { GiTeacher } from "react-icons/gi";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
-import { useTheme } from "../context/ThemeContext";
+
 import { Moon, Sun } from "lucide-react";
 
 const Navber = () => {
-  const { theme, toggleTheme } = useTheme();
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || "light")
+
+  useEffect(() => {
+    const html = document.querySelector('html')
+     html.setAttribute("data-theme", theme)
+     localStorage.setItem("theme", theme)
+  }, [theme])
+
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark": "light")
+  }
   const navigate = useNavigate();
   const { user, logOut } = React.useContext(AuthContext);
 
@@ -20,7 +31,7 @@ const Navber = () => {
   };
 
   return (
-    <div className="navbar bg-white/30 backdrop-blur-md shadow-md py-6 sticky top-0 z-50">
+    <div className="navbar bg-gray-800 text-white backdrop-blur-md shadow-md py-6 sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -81,12 +92,11 @@ const Navber = () => {
       </div>
 
       <div className="navbar-end flex gap-5 items-center">
-        <button
-          onClick={toggleTheme}
-          className="p-2 rounded-full bg-gray-200/50 dark:bg-gray-700/50 backdrop-blur-sm"
-        >
-          {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-        </button>
+        <input
+           onChange={(e)=> handleTheme(e.target.checked)}
+           type="checkbox"
+           defaultChecked={localStorage.getItem('theme') === "dark"}
+           className="toggle bg-sky-400"/>
 
         {user ? (
           <div className="flex gap-3 items-center relative group">

@@ -5,6 +5,7 @@ import { ThemeProvider } from "../context/ThemeContext";
 import WhyFinancialPlanningMatters from "../components/WhyFinancialPlanningMatters";
 import BudgetingTips from "../components/BudgetingTips";
 import Footer from "../components/Footer";
+import OverviewSection from "../components/OverviewSection";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <div className="">
         <Navber></Navber>
         <Banner></Banner>
+        <OverviewSection/>
         <BudgetingTips />
         <WhyFinancialPlanningMatters />
         <Footer />

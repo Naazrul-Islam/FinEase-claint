@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const BudgetingTips = () => {
   return (
     <section
-      className="relative py-20 overflow-hidden  text-white"
+      className="relative py-20 overflow-hidden bg-black text-white"
     >
       {/* Animated gradient aura */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-purple-900/60 opacity-90 blur-2xl -z-10" />

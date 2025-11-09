@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const WhyFinancialPlanningMatters = () => {
   return (
-    <section className="relative py-20 overflow-hidden bg-[#0a0f1a] text-white">
+    <section className="relative py-20 overflow-hidden bg-black text-white">
       {/* Background aura */}
       <div className="absolute inset-0 bg-gradient-to-tr from-[#f472b61a] via-[#9333ea1a] to-[#06b6d41a] blur-3xl -z-10" />
 

@@ -61,7 +61,9 @@ const LogIn = () => {
         form.reset();
         setError("");
         setSuccess(true);
+        toast.success("LogIn Successful");
         navigate(`${location.state ? location.state : "/"}`);
+        
       })
       .catch((error) => {
         console.error(error);
