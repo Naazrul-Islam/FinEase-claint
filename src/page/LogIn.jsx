@@ -4,6 +4,8 @@ import { LuEyeClosed } from "react-icons/lu";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
+import Navber from "../components/Navber";
+import Footer from "../components/Footer";
 
 const LogIn = () => {
   const [error, setError] = useState("");
@@ -73,7 +75,7 @@ const LogIn = () => {
   };
   return (
     <>
-      <Navber></Navber>
+  
     <div className="hero bg-base-200 min-h-screen gap-10">
       <div className="hero-content flex-col lg:flex-row-reverse mr-6">
         <div className="text-center lg:text-left">
@@ -156,7 +158,6 @@ const LogIn = () => {
         </div>
       </div>
     </div>
-    <Footer></Footer>
     </>
   );
 };

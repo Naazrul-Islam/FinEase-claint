@@ -35,7 +35,7 @@ const AddTransaction = () => {
     };
 
     try {
-      await axios.post("http://localhost:3000/transactions", transactionData);
+      await axios.post("http://localhost:3000/add-transactions", transactionData);
       Swal.fire({
         title: "✅ Success!",
         text: "Your transaction has been added successfully 🎉",

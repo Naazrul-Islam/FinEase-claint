@@ -8,6 +8,8 @@ import AddTransaction from "../page/AddTransaction";
 import MyTransactions from "../page/MyTransactions";
 import Reports from "../page/Reports";
 import PrivateRoute from "./PrivaterRoute";
+import UpdateTransaction from "../components/UpdateTransaction";
+import TransactionDetails from "../page/TransactionDetails";
 
 const Router = createBrowserRouter([
   {
@@ -22,6 +24,12 @@ const Router = createBrowserRouter([
     path: "/MyTransactions",
     element: <PrivateRoute><MyTransactions></MyTransactions></PrivateRoute>,
   },
+  
+  {
+    path: "/transactions/:id",
+    element: <PrivateRoute><TransactionDetails></TransactionDetails></PrivateRoute>,
+  },
+
   {
     path: "/Reports",
     element: <PrivateRoute><Reports></Reports></PrivateRoute>,

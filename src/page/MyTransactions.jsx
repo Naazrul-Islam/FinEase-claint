@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import Navber from "../components/Navber";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import { FaEdit, FaTrashAlt, FaEye } from "react-icons/fa";
+import LoadingAnimation from "../components/LoadingAnimation";
 
 const MyTransaction = () => {
   const { user } = useContext(AuthContext);
@@ -22,7 +23,7 @@ const MyTransaction = () => {
 
   const fetchTransactions = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/transactions");
+      const res = await axios.get("http://localhost:3000/my-transactions");
       const userTransactions = res.data.filter(
         (t) => t.userEmail === user.email
       );
@@ -57,14 +58,12 @@ const MyTransaction = () => {
     });
   };
 
-  const handleUpdate = (id) => navigate(`/transactions/edit/${id}`);
+  // const handleUpdate = (id) => navigate(`/MyTransactions/${id}`);
   const handleView = (id) => navigate(`/transactions/${id}`);
 
   if (loading)
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-900 via-purple-800 to-indigo-900 text-white text-xl">
-        লোড হচ্ছে...
-      </div>
+      <LoadingAnimation />
     );
 
   return (
@@ -115,12 +114,11 @@ const MyTransaction = () => {
                 </p>
 
                 <div className="flex justify-between items-center mt-4">
-                  <button
-                    onClick={() => handleUpdate(t._id)}
+                  <Link to={`/MyTransactions/${t._id}`}><button
                     className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
                   >
-                    <FaEdit /> U
-                  </button>
+                    <FaEdit /> Update
+                  </button></Link>
                   <button
                     onClick={() => handleDelete(t._id)}
                     className="flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
