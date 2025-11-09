@@ -6,6 +6,7 @@ const MyTransactions = () => {
         <div>
           <Navber></Navber>
           <h1>My Transactions</h1>
+          <Footer></Footer>
         </div>
     );
 };

@@ -7,6 +7,8 @@ import { Link, useLocation, useNavigate } from "react-router";
 
 import { toast, ToastContainer } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
+import Footer from "../components/Footer";
+import Navber from "../components/Navber";
 
 const SignUp = () => {
   const [error, setError] = useState("");
@@ -77,6 +79,8 @@ const SignUp = () => {
       });
   };
   return (
+    <>
+      <Navber></Navber>
     <div className="hero bg-base-200 min-h-screen gap-10">
       <div className="hero-content flex-col lg:flex-row-reverse mr-6">
         <div className="text-center lg:text-left">
@@ -172,6 +176,8 @@ const SignUp = () => {
         </div>
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 };
 

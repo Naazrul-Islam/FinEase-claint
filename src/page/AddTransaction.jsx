@@ -4,6 +4,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import Navber from "../components/Navber";
+import Footer from "../components/Footer";
 
 const AddTransaction = () => {
   const { user } = useContext(AuthContext);
@@ -184,6 +185,7 @@ const AddTransaction = () => {
         </button>
       </form>
     </motion.div>
+    <Footer></Footer>
     </div>
     </>
   );

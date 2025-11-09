@@ -4,6 +4,8 @@ import { AuthContext } from "../provider/AuthProvider";
 import { useLocation } from "react-router";
 
 import { toast, ToastContainer } from "react-toastify";
+import Footer from "../components/Footer";
+import Navber from "../components/Navber";
 
 const ForgetPassword = () => {
   const { ForgetPassword } = use(AuthContext);
@@ -34,6 +36,8 @@ const ForgetPassword = () => {
   };
 
   return (
+    <>
+      <Navber></Navber>
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col">
         <h1 className="text-4xl font-bold mb-4">Reset Password</h1>
@@ -52,6 +56,8 @@ const ForgetPassword = () => {
         <ToastContainer />
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 };
 
