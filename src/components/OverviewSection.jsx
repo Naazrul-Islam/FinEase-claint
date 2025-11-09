@@ -15,7 +15,7 @@ const OverviewSection = () => {
   useEffect(() => {
     const fetchOverview = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/transactions");
+        const res = await axios.get("http://localhost:3000/overview");
         setData(res.data);
         setLoading(false);
       } catch (err) {

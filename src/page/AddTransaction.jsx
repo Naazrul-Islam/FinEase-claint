@@ -26,26 +26,32 @@ const AddTransaction = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const transactionData = {
       ...formData,
       amount: parseFloat(formData.amount),
-      email: user?.email,
-      name: user?.displayName,
+      userEmail: user?.email,
+      userName: user?.displayName,
     };
+
     try {
       await axios.post("http://localhost:3000/transactions", transactionData);
       Swal.fire({
-        title: "Success!",
-        text: "Transaction added successfully 🎉",
+        title: "✅ Success!",
+        text: "Your transaction has been added successfully 🎉",
         icon: "success",
+        background: "#1f1f2e",
+        color: "#fff",
         confirmButtonColor: "#8B5CF6",
       });
       setFormData({ type: "Income", category: "", amount: "", description: "", date: "" });
     } catch (error) {
       Swal.fire({
-        title: "Error!",
+        title: "❌ Error!",
         text: "Something went wrong. Please try again.",
         icon: "error",
+        background: "#1f1f2e",
+        color: "#fff",
         confirmButtonColor: "#EF4444",
       });
     }
@@ -54,138 +60,125 @@ const AddTransaction = () => {
   const categories = formData.type === "Income" ? incomeCategories : expenseCategories;
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 overflow-hidden">
-      {/* Background Image + Overlay */}
+    <div className="relative min-h-screen bg-gradient-to-br from-indigo-950 via-purple-900 to-blue-950 overflow-hidden text-white">
+      {/* Animated background glow */}
       <div className="absolute inset-0">
-        <img
-          src="https://romantic-violet-ggozkl8svj.edgeone.app/portrait-minded-man-pointing-his-mind-about-money.jpg"
-          alt="Background"
-          className="w-full h-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/70 via-purple-900/70 to-blue-900/70"></div>
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-500/30 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/30 rounded-full blur-3xl animate-ping"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.05),transparent_70%)]"></div>
       </div>
 
       <Navber />
 
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-xl mx-auto my-16 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+        transition={{ duration: 1 }}
+        className="relative z-10 max-w-2xl mx-auto my-20 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[2rem] p-10 shadow-[0_0_60px_rgba(168,85,247,0.25)] hover:shadow-[0_0_90px_rgba(168,85,247,0.4)] transition-all duration-700"
       >
-        <h2 className="text-3xl font-extrabold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400">
-          Add Transaction
+        <h2 className="text-4xl font-extrabold text-center mb-10 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent tracking-wide">
+          Add New Transaction
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Type */}
-          <div className="relative w-full">
+          {/* Transaction Type */}
+          <motion.div whileHover={{ scale: 1.02 }} className="relative">
             <select
               name="type"
               value={formData.type}
               onChange={handleChange}
-              className="peer w-full px-5 pt-5 pb-2 rounded-2xl bg-gradient-to-r from-white/10 to-white/5 border border-white/30 text-white placeholder-transparent outline-none focus:ring-2 focus:ring-purple-400 backdrop-blur-md shadow-[inset_0_0_10px_rgba(255,255,255,0.1)] transition-all duration-300"
+              className="w-full px-5 pt-5 pb-3 rounded-2xl bg-white/10 border border-white/30 text-white focus:ring-2 focus:ring-purple-400 outline-none backdrop-blur-sm"
             >
               <option className="text-black" value="Income">Income</option>
               <option className="text-black" value="Expense">Expense</option>
             </select>
-            <label className="absolute left-5 top-2 text-gray-400 text-sm transition-all peer-focus:top-1 peer-focus:text-gray-300 peer-focus:text-sm">
-              Type
-            </label>
-          </div>
+            <label className="absolute left-5 top-2 text-gray-300 text-sm">Transaction Type</label>
+          </motion.div>
 
           {/* Category */}
-          <div className="relative w-full">
+          <motion.div whileHover={{ scale: 1.02 }} className="relative">
             <select
               name="category"
               value={formData.category}
               onChange={handleChange}
               required
-              className="peer w-full px-5 pt-5 pb-2 rounded-2xl bg-gradient-to-r from-white/10 to-white/5 border border-white/30 text-white placeholder-transparent outline-none focus:ring-2 focus:ring-purple-400 backdrop-blur-md shadow-[inset_0_0_10px_rgba(255,255,255,0.1)] transition-all duration-300"
+              className="w-full px-5 pt-5 pb-3 rounded-2xl bg-white/10 border border-white/30 text-white focus:ring-2 focus:ring-purple-400 outline-none backdrop-blur-sm"
             >
               <option value="">Select Category</option>
               {categories.map((cat) => (
-                <option key={cat} className="text-black" value={cat}>{cat}</option>
+                <option key={cat} className="text-black" value={cat}>
+                  {cat}
+                </option>
               ))}
             </select>
-            <label className="absolute left-5 top-2 text-gray-400 text-sm transition-all peer-focus:top-1 peer-focus:text-gray-300 peer-focus:text-sm">
-              Category
-            </label>
-          </div>
+            <label className="absolute left-5 top-2 text-gray-300 text-sm">Category</label>
+          </motion.div>
 
           {/* Amount */}
-          <div className="relative w-full">
+          <motion.div whileHover={{ scale: 1.02 }} className="relative">
             <input
               type="number"
               name="amount"
               value={formData.amount}
               onChange={handleChange}
-              placeholder="Amount"
+              placeholder="Enter Amount"
               required
-              className="peer w-full px-5 pt-5 pb-2 rounded-2xl bg-gradient-to-r from-white/10 to-white/5 border border-white/30 text-white placeholder-transparent outline-none focus:ring-2 focus:ring-purple-400 backdrop-blur-md shadow-[inset_0_0_10px_rgba(255,255,255,0.1)] transition-all duration-300"
+              className="w-full px-5 pt-5 pb-3 rounded-2xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:ring-2 focus:ring-purple-400 outline-none backdrop-blur-sm"
             />
-            <label className="absolute left-5 top-2 text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-white/50 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-gray-300 peer-focus:text-sm">
-              Amount
-            </label>
-          </div>
+            <label className="absolute left-5 top-2 text-gray-300 text-sm">Amount</label>
+          </motion.div>
 
           {/* Description */}
-          <div className="relative w-full">
+          <motion.div whileHover={{ scale: 1.02 }} className="relative">
             <textarea
               name="description"
               value={formData.description}
               onChange={handleChange}
-              placeholder="Description"
+              placeholder="Write a short note..."
               required
-              className="peer w-full px-5 pt-5 pb-2 rounded-2xl bg-gradient-to-r from-white/10 to-white/5 border border-white/30 text-white placeholder-transparent outline-none focus:ring-2 focus:ring-purple-400 backdrop-blur-md shadow-[inset_0_0_10px_rgba(255,255,255,0.1)] transition-all duration-300"
+              className="w-full px-5 pt-5 pb-3 rounded-2xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:ring-2 focus:ring-purple-400 outline-none backdrop-blur-sm h-24 resize-none"
             />
-            <label className="absolute left-5 top-2 text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-white/50 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-gray-300 peer-focus:text-sm">
-              Description
-            </label>
-          </div>
+            <label className="absolute left-5 top-2 text-gray-300 text-sm">Description</label>
+          </motion.div>
 
           {/* Date */}
-          <div className="relative w-full">
+          <motion.div whileHover={{ scale: 1.02 }} className="relative">
             <input
               type="date"
               name="date"
               value={formData.date}
               onChange={handleChange}
               required
-              className="peer w-full px-5 pt-5 pb-2 rounded-2xl bg-gradient-to-r from-white/10 to-white/5 border border-white/30 text-white placeholder-transparent outline-none focus:ring-2 focus:ring-purple-400 backdrop-blur-md shadow-[inset_0_0_10px_rgba(255,255,255,0.1)] transition-all duration-300"
+              className="w-full px-5 pt-5 pb-3 rounded-2xl bg-white/10 border border-white/30 text-white focus:ring-2 focus:ring-purple-400 outline-none backdrop-blur-sm"
             />
-            <label className="absolute left-5 top-2 text-gray-400 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-white/50 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-gray-300 peer-focus:text-sm">
-              Date
-            </label>
-          </div>
+            <label className="absolute left-5 top-2 text-gray-300 text-sm">Date</label>
+          </motion.div>
 
-          {/* User Email */}
-          <div className="relative w-full">
+          {/* User Info */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
             <input
               type="email"
               value={user?.email}
               readOnly
-              className="w-full px-5 py-3 rounded-2xl bg-white/30 border border-white/30 text-gray-200 cursor-not-allowed"
+              className="w-full px-5 py-3 rounded-2xl bg-white/20 border border-white/30 text-gray-300 cursor-not-allowed"
             />
-          </div>
-
-          {/* User Name */}
-          <div className="relative w-full">
             <input
               type="text"
               value={user?.displayName}
               readOnly
-              className="w-full px-5 py-3 rounded-2xl bg-white/30 border border-white/30 text-gray-200 cursor-not-allowed"
+              className="w-full px-5 py-3 rounded-2xl bg-white/20 border border-white/30 text-gray-300 cursor-not-allowed"
             />
           </div>
 
           {/* Submit Button */}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
             type="submit"
-            className="w-full py-3 rounded-xl font-semibold text-lg bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 hover:scale-105 transition-transform shadow-lg"
+            className="w-full py-3 mt-8 rounded-2xl font-semibold text-lg bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] transition-all duration-500"
           >
-            Add Transaction
-          </button>
+            ➕ Add Transaction
+          </motion.button>
         </form>
       </motion.div>
 
@@ -195,4 +188,3 @@ const AddTransaction = () => {
 };
 
 export default AddTransaction;
-
