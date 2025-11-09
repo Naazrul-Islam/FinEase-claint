@@ -1,52 +1,102 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectCoverflow } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
 
 const WhyFinancialPlanningMatters = () => {
+  const slides = [
+    {
+      text: "Gives peace of mind and reduces money stress.",
+      color: "from-pink-500/20 to-purple-500/20",
+      glow: "shadow-[0_0_30px_rgba(236,72,153,0.4)]",
+    },
+    {
+      text: "Helps you achieve milestones like travel or home buying.",
+      color: "from-cyan-500/20 to-blue-500/20",
+      glow: "shadow-[0_0_30px_rgba(6,182,212,0.4)]",
+    },
+    {
+      text: "Prepares you for emergencies and unexpected costs.",
+      color: "from-purple-500/20 to-pink-500/20",
+      glow: "shadow-[0_0_30px_rgba(192,38,211,0.4)]",
+    },
+    {
+      text: "Encourages smarter, long-term decision-making.",
+      color: "from-blue-500/20 to-cyan-500/20",
+      glow: "shadow-[0_0_30px_rgba(59,130,246,0.4)]",
+    },
+    {
+      text: "Builds lasting wealth through consistent habits.",
+      color: "from-green-500/20 to-teal-500/20",
+      glow: "shadow-[0_0_30px_rgba(34,197,94,0.4)]",
+    },
+    {
+      text: "Creates clarity — know what truly matters.",
+      color: "from-yellow-500/20 to-orange-500/20",
+      glow: "shadow-[0_0_30px_rgba(234,179,8,0.4)]",
+    },
+  ];
+
   return (
-    <section className="relative py-20 overflow-hidden bg-black text-white">
-      {/* Background aura */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-[#f472b61a] via-[#9333ea1a] to-[#06b6d41a] blur-3xl -z-10" />
+    <section className="relative py-24 overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black text-white">
+      {/* Gradient aura background */}
+      <div className="absolute inset-0 bg-gradient-to-tl from-purple-900/20 via-pink-900/10 to-cyan-900/20 blur-3xl -z-10" />
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="max-w-4xl mx-auto px-6 py-12 rounded-3xl relative border border-pink-400/30 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-2xl shadow-[0_0_30px_rgba(255,0,255,0.1)]"
+        className="max-w-5xl mx-auto px-6 py-12 text-center"
       >
-        {/* Title */}
-        <h2 className="text-4xl font-extrabold mb-6 text-center">
+        <h2 className="text-4xl font-extrabold mb-4 tracking-wide">
           <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-            💡 Why Financial Planning Matters
+            🌟 Why Financial Planning Matters
           </span>
         </h2>
-
-        <p className="text-gray-300 mb-10 text-center text-lg">
-          Financial planning turns your goals into actionable steps.
-          It’s not about restriction — it’s about direction.
+        <p className="text-gray-300 text-lg mb-12">
+          Financial planning isn’t about limitation — it’s about liberation.
+          It gives your dreams a roadmap and your goals a heartbeat.
         </p>
 
-        {/* Animated Cards */}
-        <div className="grid sm:grid-cols-2 gap-6">
-          {[
-            "Gives peace of mind and reduces money stress.",
-            "Helps you achieve milestones like travel or home buying.",
-            "Prepares you for emergencies and unexpected costs.",
-            "Encourages smarter, long-term decision-making.",
-            "Builds lasting wealth through consistent habits.",
-            "Creates clarity — know what truly matters.",
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              className="p-5 rounded-xl bg-gradient-to-br from-pink-500/10 to-cyan-500/10 border border-pink-400/20 shadow-[0_0_20px_rgba(255,0,255,0.1)] hover:shadow-[0_0_25px_rgba(255,0,255,0.3)] transition-all"
+        {/* Swiper with 3D effect */}
+        <Swiper
+          modules={[Autoplay, EffectCoverflow]}
+          effect="coverflow"
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={"auto"}
+          coverflowEffect={{
+            rotate: 40,
+            stretch: 0,
+            depth: 120,
+            modifier: 2,
+            slideShadows: true,
+          }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          className="w-full max-w-4xl"
+        >
+          {slides.map((slide, index) => (
+            <SwiperSlide
+              key={index}
+              className="w-72 h-60 flex items-center justify-center"
             >
-              <span className="text-pink-400 font-semibold mr-2">•</span>
-              {item}
-            </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, rotateY: 10 }}
+                transition={{ duration: 0.5 }}
+                className={`p-8 text-lg font-medium rounded-2xl bg-gradient-to-br ${slide.color} backdrop-blur-xl border border-white/10 ${slide.glow} hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300`}
+              >
+                <span className="text-pink-400 text-2xl mr-2">✦</span>
+                {slide.text}
+              </motion.div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </motion.div>
     </section>
   );
