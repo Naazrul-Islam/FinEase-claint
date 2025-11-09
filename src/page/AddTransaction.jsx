@@ -69,7 +69,7 @@ const AddTransaction = () => {
   return (
     <>
     
-    <div className="bg-gradient-to-r from-blue-700 to-purple-400">
+    <div className=" from-blue-700 to-purple-400">
       <Navber></Navber>
       
     <motion.div
@@ -179,7 +179,7 @@ const AddTransaction = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg font-bold text-lg hover:opacity-90 transition"
+          className="w-full py-3 bg-primary rounded-md font-semibold hover:bg-purple-600 transition-colors"
         >
           Add Transaction
         </button>

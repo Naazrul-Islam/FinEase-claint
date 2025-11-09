@@ -5,7 +5,7 @@ const BannerSection = () => {
   return (
     <section className="relative bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 py-20 px-2 md:px-16 overflow-hidden">
       {/* Background decorative shapes */}
-      <div className="absolute min-w-full inset-0 bg-[url('https://classic-crimson-u0qauppou1.edgeone.app/jar-with-savings-copy-space.jpg')] bg-cover  bg-center opacity-50"></div>
+      <div className="absolute min-w-full inset-0 bg-[url('https://aggregate-amethyst-glspnldplv.edgeone.app/close-up-bottle-filled-coins.jpg')] bg-cover  bg-center opacity-50"></div>
       <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-purple-900/60 opacity-20"></div>
 
       {/* Content */}
