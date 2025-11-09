@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF,  FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -57,7 +58,7 @@ const Footer = () => {
           <div className="flex space-x-4 mt-2">
             {[
               { icon: <FaFacebookF />, href: "https://facebook.com" },
-              { icon: <FaTwitter />, href: "https://twitter.com" },
+              { icon: <FaXTwitter />, href: "https://twitter.com" },
               { icon: <FaInstagram />, href: "https://instagram.com" },
               { icon: <FaLinkedinIn />, href: "https://linkedin.com" },
             ].map((item, i) => (

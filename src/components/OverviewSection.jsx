@@ -13,8 +13,9 @@ const OverviewSection = () => {
   useEffect(() => {
     const fetchOverview = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/overview");
+        const res = await axios.get("http://localhost:3000/transactions");
         setData(res.data);
+        console.log(res.data);
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -28,8 +29,8 @@ const OverviewSection = () => {
 
   return (
     <>
-      <div className="bg-black shadow-lg shadow-blue-500/20">
-        <h1 className="text-3xl md:text-4xl font-bold md:font-extrabold pt-10 mb-6 text-white underline text-center">
+      <div className=" shadow-lg shadow-blue-500/20 pb-10">
+        <h1 className="text-3xl md:text-4xl font-bold md:font-extrabold pt-10 mb-6  underline text-center">
           Financial Overview
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">

@@ -3,6 +3,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
+import Navber from "../components/Navber";
 
 const AddTransaction = () => {
   const { user } = useContext(AuthContext);
@@ -30,6 +31,7 @@ const AddTransaction = () => {
 
     const transactionData = {
       ...formData,
+      amount: parseFloat(formData.amount),
       email: user?.email,
       name: user?.displayName,
     };
@@ -64,6 +66,11 @@ const AddTransaction = () => {
     formData.type === "Income" ? incomeCategories : expenseCategories;
 
   return (
+    <>
+    
+    <div className="bg-gradient-to-r from-blue-700 to-purple-400">
+      <Navber></Navber>
+      
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
@@ -177,6 +184,8 @@ const AddTransaction = () => {
         </button>
       </form>
     </motion.div>
+    </div>
+    </>
   );
 };
 
