@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaFacebookF,  FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { MdManageAccounts } from "react-icons/md";
 
 const Footer = () => {
   return (
@@ -22,7 +23,8 @@ const Footer = () => {
             whileHover={{ scale: 1.1 }}
             className="flex items-center space-x-2 mb-3"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-violet-500 rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.4)]" />
+            {/* <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-violet-500 rounded-xl shadow-[0_0_15px_rgba(0,255,255,0.4)]" /> */}
+            <MdManageAccounts className="text-3xl text-purple-300" />
             <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
               FinEase
             </h1>
