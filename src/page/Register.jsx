@@ -25,7 +25,7 @@ const SignUp = () => {
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   };
 
@@ -73,7 +73,7 @@ const SignUp = () => {
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
         setError(error.message);
         toast.error(error.message);
       });

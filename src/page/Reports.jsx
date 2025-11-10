@@ -28,7 +28,7 @@ const Reports = () => {
         );
         setReportData(res.data);
       } catch (err) {
-        console.error("Error fetching reports:", err);
+        // console.error("Error fetching reports:", err);
       } finally {
         setLoading(false);
       }

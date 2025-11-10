@@ -36,7 +36,7 @@ const MyTransaction = () => {
       setTransactions(res.data);
       setLoading(false);
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       Swal.fire("Error", "Transactions not found!", "error");
       setLoading(false);
     }
@@ -57,7 +57,7 @@ const MyTransaction = () => {
           setTransactions(transactions.filter((t) => t._id !== id));
           Swal.fire("Deleted!", "Transaction has been deleted.", "success");
         } catch (err) {
-          console.error(err);
+          // console.error(err);
           Swal.fire("Error", "Transaction could not be deleted.", "error");
         }
       }

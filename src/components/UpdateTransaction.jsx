@@ -32,7 +32,7 @@ const UpdateTransaction = () => {
           date: data.date?.split("T")[0] || "",
         });
       } catch (err) {
-        console.error(err);
+        // console.error(err);
         Swal.fire("Error", "Failed to fetch transaction data", "error");
       }
     };
@@ -58,7 +58,7 @@ const UpdateTransaction = () => {
       });
       navigate("/mytransactions");
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       Swal.fire("Error", "Failed to update transaction", "error");
     }
   };

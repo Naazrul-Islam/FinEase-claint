@@ -27,7 +27,7 @@ const LogIn = () => {
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
       });
   };
 
@@ -68,7 +68,7 @@ const LogIn = () => {
         
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
         setError(error.message);
         toast.error(error.message);
       });

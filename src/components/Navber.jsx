@@ -20,11 +20,11 @@ const Navber = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      console.log("Logged out successfully");
+      // console.log("Logged out successfully");
 
       navigate("/");
     } catch (error) {
-      console.error("Logout failed:", error);
+      // console.error("Logout failed:", error);
     }
   };
 
@@ -73,7 +73,7 @@ const Navber = () => {
           className="btn btn-ghost text-2xl flex items-center gap-2 font-bold"
         >
           <GiTeacher className="text-3xl text-purple-300" />
-          FinEase
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">FinEase</h1>
         </Link>
       </div>
 
