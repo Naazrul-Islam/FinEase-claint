@@ -13,21 +13,27 @@ const MyTransaction = () => {
   const { user } = useContext(AuthContext);
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sortBy, setSortBy] = useState("date");
+  const [order, setOrder] = useState("desc");
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user?.email) {
       fetchTransactions();
     }
-  }, [user]);
+  }, [user, sortBy, order]);
 
   const fetchTransactions = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/my-transactions");
-      const userTransactions = res.data.filter(
-        (t) => t.userEmail === user.email
-      );
-      setTransactions(userTransactions);
+      setLoading(true);
+      const res = await axios.get("http://localhost:3000/my-transactions", {
+        params: {
+          userEmail: user.email,
+          sortBy,
+          order,
+        },
+      });
+      setTransactions(res.data);
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -58,21 +64,42 @@ const MyTransaction = () => {
     });
   };
 
-  // const handleUpdate = (id) => navigate(`/MyTransactions/${id}`);
   const handleView = (id) => navigate(`/transactions/${id}`);
 
-  if (loading)
-    return (
-      <LoadingAnimation />
-    );
+  if (loading) return <LoadingAnimation />;
 
   return (
     <>
       <Navber />
-      <div className="min-h-screen  py-10 px-6">
-        <h1 className="text-3xl font-bold text-center  mb-8">
-          💳 My Transactions
-        </h1>
+      <div className="min-h-screen py-10 px-6">
+        <h1 className="text-3xl font-bold text-center mb-8">💳 My Transactions</h1>
+
+        {/* Sorting Controls */}
+        <div className="flex justify-center items-center gap-4 mb-6">
+          <label>
+            Sort by:
+            <select
+              className="ml-2 p-1 border rounded"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+            >
+              <option value="date">Date</option>
+              <option value="amount">Amount</option>
+            </select>
+          </label>
+
+          <label>
+            Order:
+            <select
+              className="ml-2 p-1 border rounded"
+              value={order}
+              onChange={(e) => setOrder(e.target.value)}
+            >
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </label>
+        </div>
 
         {transactions.length === 0 ? (
           <div className="text-center text-gray-600 text-lg">
@@ -114,11 +141,11 @@ const MyTransaction = () => {
                 </p>
 
                 <div className="flex justify-between items-center mt-4">
-                  <Link to={`/MyTransactions/${t._id}`}><button
-                    className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
-                  >
-                    <FaEdit /> Update
-                  </button></Link>
+                  <Link to={`/MyTransactions/${t._id}`}>
+                    <button className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+                      <FaEdit /> Update
+                    </button>
+                  </Link>
                   <button
                     onClick={() => handleDelete(t._id)}
                     className="flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
