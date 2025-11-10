@@ -15,12 +15,12 @@ const TransactionDetails = () => {
   useEffect(() => {
     const fetchTransaction = async () => {
       try {
-        // ✅ Get single transaction
+        
         const res = await axios.get(`http://localhost:3000/transactions/${id}`);
         const data = res.data;
         setTransaction(data);
 
-        // ✅ Fetch total of this category
+        
         const allRes = await axios.get("http://localhost:3000/my-transactions");
         const allData = allRes.data;
         const total = allData

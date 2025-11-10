@@ -5,7 +5,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, XAxis, YAxis, Bar, Cart
 import { motion } from "framer-motion";
 import Navber from "../components/Navber";
 import Footer from "../components/Footer";
-import LoadingAnimation from "../components/LoadingAnimation"; // optional loading spinner
+import LoadingAnimation from "../components/LoadingAnimation"; 
 
 const COLORS = ["#4F46E5", "#06B6D4", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6"];
 
