@@ -80,7 +80,7 @@ const SignUp = () => {
   };
   return (
     <>
-      <Navber></Navber>
+      
     <div className="hero bg-base-200 min-h-screen gap-10">
       <div className="hero-content flex-col lg:flex-row-reverse mr-6">
         <div className="text-center lg:text-left">
