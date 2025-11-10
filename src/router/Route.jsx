@@ -10,6 +10,7 @@ import Reports from "../page/Reports";
 import PrivateRoute from "./PrivaterRoute";
 import UpdateTransaction from "../components/UpdateTransaction";
 import TransactionDetails from "../page/TransactionDetails";
+import MyProfile from "../components/MyProfile";
 
 const Router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const Router = createBrowserRouter([
   {
     path: "/transactions/:id",
     element: <PrivateRoute><TransactionDetails></TransactionDetails></PrivateRoute>,
+  },
+  {
+    path: "/profile",
+    element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>,
   },
 
   {

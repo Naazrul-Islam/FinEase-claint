@@ -44,7 +44,7 @@ const BannerSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-extrabold text-white leading-tight"
+          className="text-4xl md:text-6xl font-extrabold  leading-tight"
         >
           FinEase – <br />
           Simplify Your Finances, Empower Your Future
@@ -54,7 +54,7 @@ const BannerSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="text-gray-200 mt-6 text-lg md:text-xl"
+          className=" mt-6 text-lg md:text-xl"
         >
           Take control of your money, track your goals, and achieve financial freedom with ease.
         </motion.p>
