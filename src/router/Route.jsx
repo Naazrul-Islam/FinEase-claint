@@ -24,7 +24,10 @@ const Router = createBrowserRouter([
     path: "/MyTransactions",
     element: <PrivateRoute><MyTransactions></MyTransactions></PrivateRoute>,
   },
-  
+  // {
+  //   path: "/MyTransactions/:id",
+  //   element: <PrivateRoute><UpdateTransaction></UpdateTransaction></PrivateRoute>,
+  // },
   {
     path: "/transactions/:id",
     element: <PrivateRoute><TransactionDetails></TransactionDetails></PrivateRoute>,
