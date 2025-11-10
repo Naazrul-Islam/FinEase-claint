@@ -69,8 +69,8 @@ const MyTransaction = () => {
   return (
     <>
       <Navber />
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 py-10 px-6">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
+      <div className="min-h-screen  py-10 px-6">
+        <h1 className="text-3xl font-bold text-center  mb-8">
           💳 My Transactions
         </h1>
 
