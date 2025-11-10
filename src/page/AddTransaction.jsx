@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
-import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import Navber from "../components/Navber";
 import Footer from "../components/Footer";
+import { motion } from "framer-motion";
 
 const AddTransaction = () => {
   const { user } = useContext(AuthContext);
@@ -35,7 +35,7 @@ const AddTransaction = () => {
     };
 
     try {
-      await axios.post("http://localhost:3000/add-transactions", transactionData);
+      await axios.post(`${import.meta.env.VITE_BASE_URL}/add-transactions`, transactionData);
       Swal.fire({
         title: "✅ Success!",
         text: "Your transaction has been added successfully 🎉",
@@ -46,6 +46,7 @@ const AddTransaction = () => {
       });
       setFormData({ type: "Income", category: "", amount: "", description: "", date: "" });
     } catch (error) {
+      console.error(error);
       Swal.fire({
         title: "❌ Error!",
         text: "Something went wrong. Please try again.",

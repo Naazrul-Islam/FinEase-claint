@@ -5,9 +5,9 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import Navber from "../components/Navber";
 import Footer from "../components/Footer";
-import { motion } from "framer-motion";
 import { FaEdit, FaTrashAlt, FaEye } from "react-icons/fa";
 import LoadingAnimation from "../components/LoadingAnimation";
+import { motion } from "framer-motion";
 
 const MyTransaction = () => {
   const { user } = useContext(AuthContext);
@@ -26,7 +26,7 @@ const MyTransaction = () => {
   const fetchTransactions = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:3000/my-transactions", {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/my-transactions`, {
         params: {
           userEmail: user.email,
           sortBy,
@@ -36,7 +36,7 @@ const MyTransaction = () => {
       setTransactions(res.data);
       setLoading(false);
     } catch (err) {
-      // console.error(err);
+      console.error(err);
       Swal.fire("Error", "Transactions not found!", "error");
       setLoading(false);
     }
@@ -53,11 +53,11 @@ const MyTransaction = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`http://localhost:3000/transactions/${id}`);
+          await axios.delete(`${import.meta.env.VITE_BASE_URL}/transactions/${id}`);
           setTransactions(transactions.filter((t) => t._id !== id));
           Swal.fire("Deleted!", "Transaction has been deleted.", "success");
         } catch (err) {
-          // console.error(err);
+          console.error(err);
           Swal.fire("Error", "Transaction could not be deleted.", "error");
         }
       }

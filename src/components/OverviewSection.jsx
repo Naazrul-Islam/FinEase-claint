@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import LoadingAnimation from "./LoadingAnimation";
-import { motion } from "framer-motion";
 import { FaArrowTrendUp, FaArrowTrendDown, FaWallet } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 const OverviewSection = () => {
   const [data, setData] = useState({
@@ -15,11 +15,11 @@ const OverviewSection = () => {
   useEffect(() => {
     const fetchOverview = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/overview");
+        const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/overview`);
         setData(res.data);
         setLoading(false);
       } catch (err) {
-        // console.error(err);
+        console.error(err);
         setLoading(false);
       }
     };

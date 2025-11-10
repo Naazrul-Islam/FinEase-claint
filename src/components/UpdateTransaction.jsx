@@ -22,7 +22,7 @@ const UpdateTransaction = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/transactions/${id}`);
+        const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/transactions/${id}`);
         const data = res.data;
         setFormData({
           type: data.type,
@@ -32,7 +32,7 @@ const UpdateTransaction = () => {
           date: data.date?.split("T")[0] || "",
         });
       } catch (err) {
-        // console.error(err);
+        console.error(err);
         Swal.fire("Error", "Failed to fetch transaction data", "error");
       }
     };
@@ -49,7 +49,7 @@ const UpdateTransaction = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/transactions/update/${id}`, formData);
+      await axios.put(`${import.meta.env.VITE_BASE_URL}/transactions/update/${id}`, formData);
       Swal.fire({
         icon: "success",
         title: "✅ Transaction Updated Successfully!",
@@ -58,7 +58,7 @@ const UpdateTransaction = () => {
       });
       navigate("/mytransactions");
     } catch (err) {
-      // console.error(err);
+      console.error(err);
       Swal.fire("Error", "Failed to update transaction", "error");
     }
   };

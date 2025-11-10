@@ -2,10 +2,10 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../provider/AuthProvider";
 import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, XAxis, YAxis, Bar, CartesianGrid } from "recharts";
-import { motion } from "framer-motion";
 import Navber from "../components/Navber";
 import Footer from "../components/Footer";
 import LoadingAnimation from "../components/LoadingAnimation"; 
+import { motion } from "framer-motion";
 
 const COLORS = ["#4F46E5", "#06B6D4", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6"];
 
@@ -22,13 +22,13 @@ const Reports = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          `http://localhost:3000/reports/${user.email}${
+          `${import.meta.env.VITE_BASE_URL}/reports/${user.email}${
             selectedMonth ? `?month=${selectedMonth}` : ""
           }`
         );
         setReportData(res.data);
       } catch (err) {
-        // console.error("Error fetching reports:", err);
+        console.error("Error fetching reports:", err);
       } finally {
         setLoading(false);
       }

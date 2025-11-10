@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivaterRoute";
 import UpdateTransaction from "../components/UpdateTransaction";
 import TransactionDetails from "../page/TransactionDetails";
 import MyProfile from "../components/MyProfile";
+import NotFound from "../components/NotFound";
 
 const Router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const Router = createBrowserRouter([
         element: <ForgetPassword></ForgetPassword>
       }
     ]
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   }
 ]);
 

@@ -15,13 +15,11 @@ const TransactionDetails = () => {
   useEffect(() => {
     const fetchTransaction = async () => {
       try {
-        
-        const res = await axios.get(`http://localhost:3000/transactions/${id}`);
+        const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/transactions/${id}`);
         const data = res.data;
         setTransaction(data);
 
-        
-        const allRes = await axios.get("http://localhost:3000/my-transactions");
+        const allRes = await axios.get(`${import.meta.env.VITE_BASE_URL}/my-transactions`);
         const allData = allRes.data;
         const total = allData
           .filter((t) => t.category === data.category)
@@ -30,7 +28,7 @@ const TransactionDetails = () => {
 
         setLoading(false);
       } catch (err) {
-        // console.error(err);
+        console.error(err);
         Swal.fire("Error", "Failed to fetch transaction details", "error");
       }
     };
