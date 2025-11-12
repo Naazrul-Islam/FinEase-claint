@@ -1,16 +1,103 @@
-# React + Vite
+#  FinEase – Personal Finance & Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Website:** [https://finease-e38f4.firebaseapp.com/)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Overview
+FinEase is a full-stack web application designed to simplify personal finance management.  
+With FinEase, users can record their daily transactions, analyze spending habits, and make informed financial decisions — all through an elegant and responsive interface.  
 
-## React Compiler
+The goal of this project is to help users **gain control over their money**, **track income and expenses**, and **visualize financial growth** effortlessly.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+##  Key Features
+Here are some of the main highlights of FinEase:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- * Add & Manage Transactions:** Easily record income and expenses with category tags and descriptions.  
+- * Visual Financial Reports:** Interactive charts and analytics for clear financial insights.  
+- * Secure Authentication System:** Firebase Authentication ensures user data protection and secure access.  
+- * Transaction History:** View, update, or delete any past transaction at any time.  
+-  * Light & Dark Mode:** Choose your preferred theme to enhance your experience.  
+- * Fully Responsive Design:** Works smoothly across desktops, tablets, and mobile devices.  
+- * Filter & Sort Options:** Quickly search and filter through your financial records.  
+- * Profile Management:** Manage your personal profile and see account details in one place.  
+- * Real-time Sync:** Transactions update instantly with MongoDB and Express.js backend.  
+
+---
+
+## Tech Stack
+FinEase is built using the **MERN Stack** with Firebase integration:
+
+| Layer | Technology |
+|-------|-------------|
+| Frontend | React.js, Tailwind CSS, Framer Motion |
+| Backend | Express.js, Node.js |
+| Database | MongoDB Atlas |
+| Authentication & Hosting | Firebase |
+| Charts | Recharts |
+| Deployment | Firebase Hosting (Frontend) & Vercel (Backend) |
+
+---
+
+
+##  Full Dependency List
+
+```json
+"dependencies": {
+  "@tailwindcss/vite": "^4.1.17",
+  "axios": "^1.13.2",
+  "firebase": "^12.5.0",
+  "framer-motion": "^12.23.24",
+  "lucide-react": "^0.553.0",
+  "motion": "^12.23.24",
+  "react": "^19.1.1",
+  "react-chartjs-2": "^5.3.1",
+  "react-dom": "^19.1.1",
+  "react-icons": "^5.5.0",
+  "react-router": "^7.9.5",
+  "react-toastify": "^11.0.5",
+  "recharts": "^3.3.0",
+  "sweetalert2": "^11.26.3",
+  "swiper": "^12.0.3",
+  "tailwindcss": "^4.1.17"
+}
+
+
+Folder Structure:
+
+
+finEase/
+│
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
+│   ├── provider/
+│   ├── hooks/
+│   └── App.jsx
+│
+├── .env
+├── package.json
+├── firebase.json
+└── tailwind.config.js
+
+
+## Project Goals
+
+# Simplify personal finance tracking for users.
+
+# Deliver smooth UI experience with interactive visuals.
+
+# Ensure secure and real-time data updates using Firebase.
+
+#Provide modern aesthetics and user-friendly functionality.
+
+## Developer Information
+
+Developer: Nazrul Islam
+Email: your-mnazrulislam06@gmail.com
+
+GitHub: https://github.com/Nazzrul-Islam
