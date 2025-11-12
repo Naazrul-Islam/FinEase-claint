@@ -63,9 +63,9 @@ FinEase is built using the **MERN Stack** with Firebase integration:
   "swiper": "^12.0.3",
   "tailwindcss": "^4.1.17"
 }
+####################################
 
-
-Folder Structure:
+###Folder Structure:
 
 
 finEase/
