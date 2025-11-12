@@ -44,8 +44,8 @@ FinEase is built using the **MERN Stack** with Firebase integration:
 
 ##  Full Dependency List
 
-```json
-"dependencies": {
+json
+
   "@tailwindcss/vite": "^4.1.17",
   "axios": "^1.13.2",
   "firebase": "^12.5.0",
@@ -62,7 +62,6 @@ FinEase is built using the **MERN Stack** with Firebase integration:
   "sweetalert2": "^11.26.3",
   "swiper": "^12.0.3",
   "tailwindcss": "^4.1.17"
-}
 ####################################
 
 ###Folder Structure:
