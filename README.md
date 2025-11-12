@@ -97,6 +97,6 @@ finEase/
 ## Developer Information
 
 Developer: Nazrul Islam
-Email: your-mnazrulislam06@gmail.com
+Email: your-hmnazrulislam06@gmail.com
 
 GitHub: https://github.com/Nazzrul-Islam
